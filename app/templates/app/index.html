@@ -1,12 +1,65 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Supply Chain Overview</title>
-        <script src="sketch.js">
+        <meta charset="utf-8">
+        <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/brython@3.9.6/brython.min.js">
         </script>
-    </head>
-    <body>
-        <h1>Supply Chain Overview</h1>
+        <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/brython@3.9.6/brython_stdlib.js">
+        </script>
 
-    </body>
+    </head>
+    <body onload="brython()">
+        <!-- javascript object-->
+        <!-- function Person(first, last, age, eye){
+            this.firstName = fi
+        } -->
+        <h1> Supply Chain Overview</h1>
+        <button id="button7">insert an HTML table </button> 
+        <div id="zone7"></div>
+        
+    <script type="text/python">
+        from browser import document
+        from browser.html import TABLE, TR, TH, TD
+        from browser import svg
+
+        def insert_table(event):
+            print("here: inside")
+            table = TABLE()
+
+            # header row
+            table <= TR(TH(f"Column {i}") for i in range(5))
+
+            # table rows
+            for row in range(3):
+                table <= TR(TD(f"Cell {row}-{i}") for i in range(5))
+
+            document["zone7"].clear()
+            document["zone7"] <= table
+            #adding a circle
+            ellipse = svg.ellipse(cx="70",cy="100", rx="40", ry="80",
+            stroke="black",stroke_width="2",fill="green")
+
+
+        document["button7"].bind("click", insert_table) 
+        print("here: outside")
+ 
+
+    </script>
+    <div id = "panel2"> </div> 
+        <script type="text/python">
+            from browser import document, svg
+            ellipse = svg.ellipse(cx="70",cy="100", rx="40", ry="80",
+                stroke="black",stroke_width="2",fill="black")
+    
+            panel = document['panel2'].clear()
+            panel <= ellipse
+        </script>
+
+
+
+
+        
+        </body>
 </html>
