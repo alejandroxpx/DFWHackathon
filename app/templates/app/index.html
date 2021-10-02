@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
+    <style>
+        table,th,td {
+           border: 1px solid black;
+        }
+     </style>
     <head>
+        <link rel="stylesheet" href="style.css" /> #linking css
         <meta charset="utf-8">
         <script type="text/javascript"
             src="https://cdn.jsdelivr.net/npm/brython@3.9.6/brython.min.js">
@@ -13,53 +19,80 @@
     <body onload="brython()">
         <!-- javascript object-->
         <!-- function Person(first, last, age, eye){
-            this.firstName = fi
-        } -->
+        this.firstName = fi
+    } -->
         <h1> Supply Chain Overview</h1>
-        <button id="button7">insert an HTML table </button> 
+        <button id="button7">insert an HTML table </button>
         <div id="zone7"></div>
-        
-    <script type="text/python">
-        from browser import document
-        from browser.html import TABLE, TR, TH, TD
-        from browser import svg
-
-        def insert_table(event):
-            print("here: inside")
-            table = TABLE()
-
-            # header row
-            table <= TR(TH(f"Column {i}") for i in range(5))
-
-            # table rows
-            for row in range(3):
-                table <= TR(TD(f"Cell {row}-{i}") for i in range(5))
-
-            document["zone7"].clear()
-            document["zone7"] <= table
-            #adding a circle
-            ellipse = svg.ellipse(cx="70",cy="100", rx="40", ry="80",
-            stroke="black",stroke_width="2",fill="green")
-
-
-        document["button7"].bind("click", insert_table) 
-        print("here: outside")
- 
-
-    </script>
-    <div id = "panel2"> </div> 
         <script type="text/python">
-            from browser import document, svg
-            ellipse = svg.ellipse(cx="70",cy="100", rx="40", ry="80",
-                stroke="black",stroke_width="2",fill="black")
-    
-            panel = document['panel2'].clear()
-            panel <= ellipse
+            curl --request GET \
+            --url = "https://beta.api.climatiq.io"
+            --header 'Authorization: Bearer RY6CW6GGGCM8MEJHKFJSQK68KV20
         </script>
 
 
+        <script type="text/python">
+            from browser import document
+            from browser.html import TABLE, TR, TH, TD
+            from browser import svg
+
+            def insert_table(event):
+                print("here: inside")
+                table = TABLE()
+
+                # header row
+                table <= TR(TH(f"Column {i}") for i in range(5))
+
+                # table rows
+                for row in range(3):
+                    table <= TR(TD(f"Cell {row}-{i}") for i in range(5))
+
+                document["zone7"].clear()
+                document["zone7"] <= table
 
 
-        
-        </body>
+
+            document["button7"].bind("click", insert_table)
+            print("here: outside")
+        </script>
+
+        <div class="tree"> #HTML for creating tree
+            <ul>
+                <li>
+                    <a href="#">Parent</a>
+                    <ul>
+                        <li>
+                            <a href="#">Child</a>
+                            <ul>
+                                <li>
+                                    <a href="#">Grand Child</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Child</a>
+                            <ul>
+                                <li><a href="#">Grand Child</a></li>
+                                <li>
+                                    <a href="#">Grand Child</a>
+                                    <ul>
+                                        <li>
+                                            <a href="#">Great Grand Child</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Great Grand Child</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Great Grand Child</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Grand Child</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </body>
 </html>
