@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Supply Chain Overview</title>
+        <script>
+            document.addEventListener('DOMContentLoaded',function(){
+            //send a get resuqwest to the URL
+            fetch('http://api.mediastack.com/v1/news?access_key=55eb8d52059cfe93e3c6872861af733a')
+            
+            //put response into json form
+            .then(response => response.json())
+            .then(data =>{
+            //log data to the console
+            console.log(data);
+            document.querySelector('body').innerHTML = `1 USD is equal to ${rate.toFixed(3)} EUR.`;
+    })
+})
+
+
+        </script>
+    </head>
+    <body>
+        <h1>Supply Chain Overview</h1>
+
+    </body>
+</html>
