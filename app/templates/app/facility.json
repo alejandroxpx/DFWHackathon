@@ -1,0 +1,23 @@
+{
+    "McKesson":[
+        {"Latitude":"-96.7"},
+        {"Longitude":"32.89"}
+    ],
+    "GoldmanScachs":[
+        {"Latitude":"-99.5"},
+        {"Longitude":"27.6"}
+    ],
+    "Statefarm":[
+        {"Latitude":"-96.69"},
+        {"Longitude":"33.003"}
+    ],
+    "USAA":[
+        {"Latitude":"-96.817"},
+        {"Longitude":"33.080"}
+    ],
+    "DFWHack":[
+        {"Latitude":"-96.819"},
+        {"Longitude":"33.101"}
+    ]
+
+}

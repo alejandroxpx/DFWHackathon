@@ -9,12 +9,17 @@
         }
      </style>
     <head>
-        <title>Supply Chain</title>
+        <title>Supply Chain Optimization</title>
 
     </head>
     <body>
     <h1>Supply Chain</h1>
-    <div id='map' width="100%" style='height:400px'></div>
+    <form action="">
+        <a href="{% url 'locate'  %}"></a>
+        <input type="text" placeholder="Please enter business" name="locate">
+        <input type="submit">    
+    </form>
+        <div id='map' width="100%" style='height:400px'></div>
     <script>
      mapboxgl.accessToken = 'pk.eyJ1IjoiYXBhc2lsbGEiLCJhIjoiY2t1YTVid2FjMGRkdDJxbnpnemE5aGc2cCJ9.OVdCYCPGLbboVb3TnG7vJw';
      var map = new mapboxgl.Map({
@@ -24,6 +29,11 @@
       center: [-96.97,32.89],
       zoom:10
      });
+        // Create a new marker.
+        const marker = new mapboxgl.Marker()
+        .setLngLat({Latitude},{Longitutde})
+        .addTo(map);
+        </script>
     </script>
     </body>
 </html>
