@@ -1,23 +1,44 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Supply Chain Overview</title>
-        <script src="/sketch.js">
-//             document.addEventListener('DOMContentLoaded',function(){
-//             //send a get resuqwest to the URL
-//             fetch('http://api.mediastack.com/v1/news?access_key=55eb8d52059cfe93e3c6872861af733a')
-//             //put response into json form
-//             .then(response => response.json())
-//             .then(data =>{
-//             //log data to the console
-//             console.log(data);
-//             document.querySelector('body').innerHTML = `1 USD is equal to ${rate.toFixed(3)} EUR.`;
-//     })
-// })
+        <meta charset="utf-8">
+        <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/brython@3.9.6/brython.min.js">
+        </script>
+        <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/brython@3.9.6/brython_stdlib.js">
         </script>
     </head>
-    <body>
-        <h1>Supply Chain Overview</h1>
+    <body onload="brython()">
+        <!-- javascript object-->
+        <!-- function Person(first, last, age, eye){
+            this.firstName = fi
+        } -->
+        <h1> Supply Chain Overview</h1>
+        <button id="button7">insert an HTML table </button> 
+        <div id="zone7"></div>
+        <script type="text/python">
+        from browser import document
+        from browser.html import TABLE, TR, TH, TD
 
-    </body>
+        def insert_table(event):
+            print("here: inside")
+            table = TABLE()
+
+            # header row
+            table <= TR(TH(f"Column {i}") for i in range(5))
+
+            # table rows
+            for row in range(3):
+                table <= TR(TD(f"Cell {row}-{i}") for i in range(5))
+
+            document["zone7"].clear()
+            document["zone7"] <= table
+
+        document["button7"].bind("click", insert_table) 
+        print("here: outside")
+    </script>
+        
+        
+        </body>
 </html>
