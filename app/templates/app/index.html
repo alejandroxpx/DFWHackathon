@@ -1,59 +1,29 @@
 <!DOCTYPE html>
 <html>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
+
     <style>
         table,th,td {
            border: 1px solid black;
         }
      </style>
     <head>
-        <meta charset="utf-8">
-        <script type="text/javascript"
-            src="https://cdn.jsdelivr.net/npm/brython@3.9.6/brython.min.js">
-        </script>
-        <script type="text/javascript"
-            src="https://cdn.jsdelivr.net/npm/brython@3.9.6/brython_stdlib.js">
-        </script>
+        <title>Supply Chain</title>
 
     </head>
-    <body onload="brython()">
-        <!-- javascript object-->
-        <!-- function Person(first, last, age, eye){
-        this.firstName = fi
-    } -->
-        <h1> Supply Chain Overview</h1>
-        <button id="button7">insert an HTML table </button>
-        <div id="zone7"></div>
-        <script type="text/python">
-            curl --request GET \
-            --url = "https://beta.api.climatiq.io"
-            --header 'Authorization: Bearer RY6CW6GGGCM8MEJHKFJSQK68KV20
-        </script>
-
-
-        <script type="text/python">
-            from browser import document
-            from browser.html import TABLE, TR, TH, TD
-            from browser import svg
-
-            def insert_table(event):
-                print("here: inside")
-                table = TABLE()
-
-                # header row
-                table <= TR(TH(f"Column {i}") for i in range(5))
-
-                # table rows
-                for row in range(3):
-                    table <= TR(TD(f"Cell {row}-{i}") for i in range(5))
-
-                document["zone7"].clear()
-                document["zone7"] <= table
-
-
-
-            document["button7"].bind("click", insert_table)
-            print("here: outside")
-        </script>
-
+    <body>
+    <h1>Supply Chain</h1>
+    <div id='map' width="100%" style='height:400px'></div>
+    <script>
+     mapboxgl.accessToken = 'pk.eyJ1IjoiYXBhc2lsbGEiLCJhIjoiY2t1YTVid2FjMGRkdDJxbnpnemE5aGc2cCJ9.OVdCYCPGLbboVb3TnG7vJw';
+     var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v10',
+      //center: [-77.03, 38.91],
+      center: [-96.97,32.89],
+      zoom:10
+     });
+    </script>
     </body>
 </html>
