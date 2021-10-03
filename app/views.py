@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+import os
 import json
 
 # Create your views here.
@@ -19,11 +20,14 @@ def default_map(request):
                   { 'mapbox_access_token': mapbox_access_token })
 
 def locate(request,facility):
-    f = open('facility.json',)
+    print(f"{facility}")
+    loc_dir = os.path.dirname(__file__)
+    fp = os.path.join(loc_dir, 'templates/app/facility.json')
+    f = open(fp)
     data = json.load(f)
-    print(f"{data}")
+
         
-    coordinate = [20,20]
+    coordinate = data
     return render(request,"app/index.html",{
         "coordinate":coordinate
     })

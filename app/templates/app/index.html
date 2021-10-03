@@ -12,15 +12,34 @@
         <title>Supply Chain Optimization</title>
 
     </head>
-    <body>
-    <h1>Supply Chain</h1>
-    <form action="">
-        <a href="{% url 'locate'  %}"></a>
-        <input type="text" placeholder="Please enter business" name="locate">
+    
+    <h1>Supply Chain Optimization</h1>
+    <form name = "input" action="" onsubmit = "GetFacility();">
+        <input type="text" placeholder="Please enter business" name="facility">
         <input type="submit">    
     </form>
-        <div id='map' width="100%" style='height:400px'></div>
     <script>
+        function GetFacility(){
+            facility = document.input.facility.value
+            $.getJSON("facility.json",function(json){
+                console.log(json)
+                await new Promise(r => setTimeout(r, 2000));
+            })
+            // console.log(document.input.facility.value);
+        }
+    </script>
+
+
+
+<!-- 
+
+    <form action="{% url 'locate'  'variable' %}" method = "post">
+        {% csrf_token %}
+        <input type="text" placeholder="Please enter business" name="facility">
+        <input type="submit">    
+    </form> -->
+        <div id='map' width="100%" style='height:500px'></div>
+   <script>
      mapboxgl.accessToken = 'pk.eyJ1IjoiYXBhc2lsbGEiLCJhIjoiY2t1YTVid2FjMGRkdDJxbnpnemE5aGc2cCJ9.OVdCYCPGLbboVb3TnG7vJw';
      var map = new mapboxgl.Map({
       container: 'map',
@@ -29,11 +48,20 @@
       center: [-96.97,32.89],
       zoom:10
      });
+    //  console.log("##########")
+    //  console.log("html here: " + coordinate)
+        // Create a new marker.
+        // const marker = new mapboxgl.Marker()
+        // .setLngLat(${coordinate},${coordinate})
+        // .addTo(map);
+    </script>
+    <body>
+        <script>
         // Create a new marker.
         const marker = new mapboxgl.Marker()
-        .setLngLat({Latitude},{Longitutde})
-        .addTo(map);
+         .setLngLat([-96,33])
+         .addTo(map);
         </script>
-    </script>
+
     </body>
 </html>
