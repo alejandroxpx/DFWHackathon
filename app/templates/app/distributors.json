@@ -1,0 +1,28 @@
+{
+    "Methodist":[
+        {"Latitude":"-99.5328"},
+        {"Longitude":"27.6299776"},
+        {"Zip":"75070"}
+    ],
+    "Parkland":[
+        {"Latitude":"-99.5328"},
+        {"Longitude":"27.6299776"},
+        {"Zip":"75235"}
+    ],
+    "Bluemedic":[
+        {"Latitude":"-96.69"},
+        {"Longitude":"33.003"},
+        {"Zip":"75211"}
+    ],
+    "Baylor":[
+        {"Latitude":"-99.5328"},
+        {"Longitude":"27.6299776"},
+        {"Zip":"75224"}
+    ],
+    "Lifecare":[
+        {"Latitude":"-99.5328"},
+        {"Longitude":"27.6299776"},
+        {"Zip":"75227"}
+    ]
+
+}

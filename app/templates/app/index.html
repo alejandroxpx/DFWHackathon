@@ -7,6 +7,14 @@
         table,th,td {
            border: 1px solid black;
         }
+        form{
+            padding-left: 30px;
+            padding-bottom: 30px;
+        }
+        h1{
+            padding-left: 30px;
+        }
+   
      </style>
     <head>
         <title>Supply Chain Optimization</title>
@@ -14,31 +22,30 @@
     </head>
     
     <h1>Supply Chain Optimization</h1>
-    <form name = "input" action="" onsubmit = "GetFacility();">
+    <formaction="zoomed.html" method="post">
+        <input type="text" placeholder="Enter Business" >
+        <input type="submit"/>
+</form>
+
+    <!-- <form name = "input" action="" onsubmit = "GetFacility();">
         <input type="text" placeholder="Please enter business" name="facility">
         <input type="submit">    
-    </form>
+    </form> -->
     <script>
         function GetFacility(){
-            facility = document.input.facility.value
+            let facility = document.input.facility.value
             $.getJSON("facility.json",function(json){
-                console.log(json)
+            console.log(json)
+            var cat = 3
+            document.write(cat)
                 await new Promise(r => setTimeout(r, 2000));
             })
             // console.log(document.input.facility.value);
         }
+        
     </script>
 
-
-
-<!-- 
-
-    <form action="{% url 'locate'  'variable' %}" method = "post">
-        {% csrf_token %}
-        <input type="text" placeholder="Please enter business" name="facility">
-        <input type="submit">    
-    </form> -->
-        <div id='map' width="100%" style='height:500px'></div>
+    <div id='map' width="100%" style='height:500px'></div>
    <script>
      mapboxgl.accessToken = 'pk.eyJ1IjoiYXBhc2lsbGEiLCJhIjoiY2t1YTVid2FjMGRkdDJxbnpnemE5aGc2cCJ9.OVdCYCPGLbboVb3TnG7vJw';
      var map = new mapboxgl.Map({
@@ -46,8 +53,33 @@
       style: 'mapbox://styles/mapbox/streets-v10',
       //center: [-77.03, 38.91],
       center: [-96.97,32.89],
-      zoom:10
+      zoom:8
      });
+    /* 
+    Add an event listener that runs
+    when a user clicks on the map element.
+    */
+   addEventListener.map.on('click', ({ point }) => {
+    // If the user clicked on one of your markers, get its information.
+    const features = map.queryRenderedFeatures(point, {
+        layers: ['map'] // replace with your layer name
+    });
+    if (!features.length) {
+        return;
+    }
+    const feature = features[0];
+
+    /* 
+    Create a popup, specify its options 
+    and properties, and add it to the map.
+  */
+const popup = new mapboxgl.Popup({ offset: [0, -15] })
+  .setLngLat(feature.geometry.coordinates)
+  .setHTML(
+    `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
+  )
+  .addTo(map);
+    });
     //  console.log("##########")
     //  console.log("html here: " + coordinate)
         // Create a new marker.
@@ -58,10 +90,126 @@
     <body>
         <script>
         // Create a new marker.
-        const marker = new mapboxgl.Marker()
-         .setLngLat([-96,33])
+        const marker5 = new mapboxgl.Marker()
+         .setLngLat([-96.1,33])
          .addTo(map);
         </script>
+        <script>
+        // Create a new marker.
+        const marker2 = new mapboxgl.Marker()
+         .setLngLat([-95.7,32.7])
+         .addTo(map);
+        </script>
+        <script>
+        // Create a new marker.
+        const marker3 = new mapboxgl.Marker()
+         .setLngLat([-94,32])
+         .addTo(map);
+        </script>
+        <script>
+        // Create a new marker.
+        const marker4 = new mapboxgl.Marker()
+        .setLngLat([-93,31.5])
+        .addTo(map);
+        </script>
+<script type = "text/javascript">
 
+    function getESG(company)
+    {
+    companyName = company
+    fetch("https://esg-environmental-social-governance-data.p.rapidapi.com/search?q=" + company, {
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-host": "esg-environmental-social-governance-data.p.rapidapi.com",
+            "x-rapidapi-key": "fc27fecef9mshf90f330f1086320p18c808jsne5e3d72d953d"
+        }
+    })
+    .then(response => response.json())
+    .then((user) => {
+        
+        console.log(user[0]['company_name'])
+        console.log(user[0]['stock_symbol'])
+        console.log("ESG Score: " + user[0]['total'])
+        console.log("ESG Level: " + user[0]['total_level'])
+        console.log("Environmental Score: " + user[0]['environment_score']) 
+        console.log("Governance Score: " + user[0]['governance_score']) 
+        console.log("Social Score: " + user[0]['social_score']) 
+        return user[0]['total']
+    })
+    .catch(err => {
+        console.error(err);
+        alert("Sorry, the company you selected is currently unavailable. Please try another company.")
+    });
+    }
+    var mcK_esg = getESG("McKesson Corp") 
+    console.log(mcK_esg)
+        </script>
+    
+    <script>
+        body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYXBhc2lsbGEiLCJhIjoiY2t1YTVid2FjMGRkdDJxbnpnemE5aGc2cCJ9.OVdCYCPGLbboVb3TnG7vJw';
+const map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/mapbox/streets-v11',
+center: [-122.486052, 37.830348],
+zoom: 15
+});
+ 
+map.on('load', () => {
+map.addSource('route', {
+'type': 'geojson',
+'data': {
+'type': 'Feature',
+'properties': {},
+'geometry': {
+'type': 'LineString',
+'coordinates': [
+[-122.483696, 37.833818],
+[-122.483482, 37.833174],
+[-122.483396, 37.8327],
+[-122.483568, 37.832056],
+[-122.48404, 37.831141],
+[-122.48404, 37.830497],
+[-122.483482, 37.82992],
+[-122.483568, 37.829548],
+[-122.48507, 37.829446],
+[-122.4861, 37.828802],
+[-122.486958, 37.82931],
+[-122.487001, 37.830802],
+[-122.487516, 37.831683],
+[-122.488031, 37.832158],
+[-122.488889, 37.832971],
+[-122.489876, 37.832632],
+[-122.490434, 37.832937],
+[-122.49125, 37.832429],
+[-122.491636, 37.832564],
+[-122.492237, 37.833378],
+[-122.493782, 37.833683]
+]
+}
+}
+});
+map.addLayer({
+'id': 'route',
+'type': 'line',
+'source': 'route',
+'layout': {
+'line-join': 'round',
+'line-cap': 'round'
+},
+'paint': {
+'line-color': '#888',
+'line-width': 8
+}
+});
+});
+</script>
+    </script>
     </body>
 </html>
